@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>VANT | Normativa Drones - Francia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background: transparent;
+        }
+
+        body {
+            background: transparent !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 48px 24px;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* IMAGEN DE FONDO - Torre Eiffel (SIN NINGÚN FILTRO) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/VANT-APP-OFICIAL/regulaciones/main/paris_torre.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        /* Capa oscura suave solo para contraste del texto */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* Documento principal - sin blur en el fondo */
+        .vant-doc {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            border-radius: 48px;
+            padding: 42px 48px;
+            box-shadow: 0 30px 50px -25px rgba(0,0,0,0.5), 0 0 20px rgba(0,210,255,0.2);
+        }
+
+        /* Header VANT */
+        .vant-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 210, 255, 0.15);
+            border-radius: 50%;
+            padding: 4px;
+        }
+        .logo-icon img {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 3px rgba(0,210,255,0.5));
+        }
+        .logo-text {
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .badge-vant {
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #00d2ff;
+            letter-spacing: 1.5px;
+        }
+
+        /* Títulos principales */
+        h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .sub {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 13px;
+            border-left: 3px solid #00d2ff;
+            padding-left: 16px;
+            margin-bottom: 32px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Secciones */
+        .section {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 2px solid #00d2ff;
+            padding-bottom: 6px;
+        }
+
+        /* Tarjetas - con blur solo aquí para legibilidad */
+        .lang-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            margin: 20px 0;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .lang-card:hover {
+            border-color: rgba(0, 210, 255, 0.7);
+            background: rgba(0, 0, 0, 0.45);
+        }
+        .lang-row {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .lang-row:last-child {
+            border-bottom: none;
+        }
+        .lang-flag {
+            width: 105px;
+            padding: 16px 18px;
+            font-weight: 700;
+            font-size: 13px;
+            background: rgba(0, 210, 255, 0.1);
+            color: #00d2ff;
+            border-right: 1px solid rgba(0,210,255,0.2);
+            letter-spacing: 0.5px;
+        }
+        .lang-content {
+            flex: 1;
+            padding: 16px 20px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+
+        /* Tabla - con blur mínimo */
+        .vant-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(3px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+        .vant-table th {
+            background: rgba(0, 20, 40, 0.6);
+            color: #00d2ff;
+            padding: 14px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(0,210,255,0.3);
+        }
+        .vant-table td {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 12px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            font-size: 12.5px;
+        }
+        .vant-table tr:last-child td {
+            border-bottom: none;
+        }
+        .vant-table tr:hover td {
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        .info-vant {
+            background: rgba(0, 210, 255, 0.1);
+            border-left: 4px solid #00d2ff;
+            border-radius: 20px;
+            padding: 18px 24px;
+            margin: 28px 0;
+            backdrop-filter: blur(3px);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .footer-vant {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 9px;
+            color: rgba(200, 220, 255, 0.9);
+            border-top: 1px solid rgba(0,210,255,0.2);
+            padding-top: 24px;
+            letter-spacing: 0.8px;
+        }
+
+        a {
+            color: #00d2ff;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(0,210,255,0.5);
+            transition: 0.2s;
+        }
+        a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        .print-btn {
+            background: rgba(0, 210, 255, 0.2);
+            border: 1px solid rgba(0, 210, 255, 0.6);
+            color: #00d2ff;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 16px;
+            font-family: inherit;
+            font-size: 12px;
+        }
+        .print-btn:hover {
+            background: #00d2ff;
+            color: #000000;
+            box-shadow: 0 0 16px rgba(0,210,255,0.5);
+        }
+
+        @media print {
+            body::before, body::after {
+                display: none;
+            }
+            .vant-doc {
+                background: #000000;
+                border: 1px solid #0a3350;
+                padding: 0.4in;
+            }
+            .print-btn {
+                display: none;
+            }
+            .lang-card {
+                background: #0a0f1a;
+            }
+            .logo-text, .lang-content, .vant-table td, .sub, .info-vant {
+                color: #ffffff !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="vant-doc">
+    <div style="text-align: right;">
+        <button class="print-btn" onclick="window.print();">🖨️ GUARDAR COMO PDF / IMPRIMIR</button>
+    </div>
+
+    <div class="vant-header">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <img src="https://i.imgur.com/0y2nnpR.png" alt="VANT Logo">
+            </div>
+            <div class="logo-text">VANT</div>
+            <div class="badge-vant">INTELIGENCIA AERONÁUTICA</div>
+        </div>
+        <div class="badge-vant">🇫🇷 FRANCE · DGAC</div>
+    </div>
+
+    <h1>NORMATIVA DE DRONES<br>REPÚBLICA FRANCESA</h1>
+    <div class="sub">Dirección General de Aviación Civil (DGAC) · Categoría abierta · Actualización oficial VANT</div>
+
+    <div class="section">
+        <div class="section-title">01 · REGISTRO OBLIGATORIO</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">🇫🇷 FRANÇAIS</div><div class="lang-content">Enregistrement obligatoire sur <strong>AlphaTango</strong> pour tout drone > 800g. Examen en ligne gratuit. Marquage visible du numéro d'enregistrement.</div></div>
+            <div class="lang-row"><div class="lang-flag">🇪🇸 ESPAÑOL</div><div class="lang-content">Registro obligatorio en <strong>AlphaTango</strong> para drones >800g. Examen online gratuito. Marcado obligatorio del número de registro en el dron.</div></div>
+            <div class="lang-row"><div class="lang-flag">🇬🇧 ENGLISH</div><div class="lang-content">Mandatory registration on <strong>AlphaTango</strong> for drones >800g. Free online exam. Drone must display the registration number.</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">02 · REGLAS DE VUELO</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">🇫🇷 FR</div><div class="lang-content">Altitude max : 120m. Vol VLOS obligatoire. Interdit au-dessus des rassemblements. Distance mini 5km des aéroports. Assurance RC obligatoire.</div></div>
+            <div class="lang-row"><div class="lang-flag">🇪🇸 ES</div><div class="lang-content">Altura máxima: 120m. Vuelo VLOS obligatorio. Prohibido sobre aglomeraciones. Distancia mínima 5km de aeropuertos. Seguro RC obligatorio.</div></div>
+            <div class="lang-row"><div class="lang-flag">🇬🇧 EN</div><div class="lang-content">Max altitude: 120m. VLOS flight mandatory. Flying over crowds prohibited. Minimum 5km from airports. Liability insurance mandatory.</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">03 · ZONAS PROHIBIDAS / ZONES INTERDITES</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">🇫🇷 FR</div><div class="lang-content">❌ Paris & région parisienne (Zone P) – interdit sans autorisation. ❌ Sites nucléaires, militaires, prisons. ❌ Parcs nationaux. ❌ Espaces aériens contrôlés.</div></div>
+            <div class="lang-row"><div class="lang-flag">🇪🇸 ES</div><div class="lang-content">❌ París y área metropolitana (Zona P) – prohibido sin autorización. ❌ Zonas militares, nucleares, prisiones. ❌ Parques nacionales. ❌ Espacios aéreos controlados.</div></div>
+            <div class="lang-row"><div class="lang-flag">🇬🇧 EN</div><div class="lang-content">❌ Paris & metropolitan area (Zone P) – prohibited without authorization. ❌ Military, nuclear sites, prisons. ❌ National parks. ❌ Controlled airspace.</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">04 · MULTAS Y SANCIONES</div>
+        <table class="vant-table">
+            <thead><tr><th>🇫🇷 INFRACTION</th><th>🇪🇸 INFRACCIÓN</th><th>🇬🇧 VIOLATION</th><th>MONTO / SANCIÓN</th></thead>
+            <tbody>
+                <tr><td style="color:#ff9999;">Vol sans enregistrement</td><td style="color:#ff9999;">Volar sin registro</td><td style="color:#ff9999;">Flying without registration</td><td style="color:#ff6b6b; font-weight:700;">75 000 €</td></tr>
+                <tr><td style="color:#ffcc88;">Vol en zone interdite</td><td style="color:#ffcc88;">Volar en zona prohibida</td><td style="color:#ffcc88;">Flight in restricted zone</td><td style="color:#ffaa44; font-weight:700;">15 000 €</td></tr>
+                <tr><td style="color:#ffcc88;">Survol de rassemblements</td><td style="color:#ffcc88;">Sobrevolar aglomeraciones</td><td style="color:#ffcc88;">Overflying crowds</td><td style="color:#ffaa44; font-weight:700;">15 000 €</td></tr>
+                <tr><td style="color:#ff9999;">Accident grave</td><td style="color:#ff9999;">Accidente grave</td><td style="color:#ff9999;">Serious accident</td><td style="color:#ff6b6b; font-weight:700;">1 an prison + 75 000 €</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">05 · ENLACES OFICIALES (DGAC)</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">🇫🇷 FR</div><div class="lang-content"><a href="https://alphatango.aviation-civile.gouv.fr" target="_blank">AlphaTango (enregistrement)</a> · <a href="https://www.geoportail.gouv.fr/donnees/espaces-aeriens-pour-drones" target="_blank">Géoportail drones</a> · <a href="https://www.ecologie.gouv.fr/drones" target="_blank">Ministère Écologie</a></div></div>
+            <div class="lang-row"><div class="lang-flag">🇪🇸 ES</div><div class="lang-content"><a href="https://alphatango.aviation-civile.gouv.fr" target="_blank">AlphaTango (registro)</a> · <a href="https://www.geoportail.gouv.fr/donnees/espaces-aeriens-pour-drones" target="_blank">Geoportal restricciones</a> · <a href="https://www.ecologie.gouv.fr/drones" target="_blank">Ministerio de Ecología francés</a></div></div>
+            <div class="lang-row"><div class="lang-flag">🇬🇧 EN</div><div class="lang-content"><a href="https://alphatango.aviation-civile.gouv.fr" target="_blank">AlphaTango (registration)</a> · <a href="https://www.geoportail.gouv.fr/donnees/espaces-aeriens-pour-drones" target="_blank">Geoportal restriction maps</a> · <a href="https://www.ecologie.gouv.fr/drones" target="_blank">French Ecology Ministry</a></div></div>
+        </div>
+    </div>
+
+    <div class="info-vant">
+        ⚡ <strong>VANT RECOMIENDA</strong> · Este documento es un resumen oficial con estilo VANT. Siempre consultar fuentes DGAC antes de cada vuelo. El incumplimiento genera sanciones graves.
+    </div>
+
+    <div class="footer-vant">
+        ✦ VANT INTELIGENCIA AERONÁUTICA ✦ <br>
+        Basado en Règlement (UE) 2019/945 et 2019/947 · DGAC France · Versión trilingüe VANT
+    </div>
+</div>
+</body>
+</html>
