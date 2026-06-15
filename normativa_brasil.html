@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>🇧🇷 BRASIL - Normativa VANT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background: transparent;
+        }
+
+        body {
+            background: transparent !important;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 48px 24px;
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* IMAGEN DE FONDO - Cristo Redentor / Río de Janeiro */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://raw.githubusercontent.com/VANT-APP-OFICIAL/regulaciones/main/cristo_redentor.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            z-index: -2;
+        }
+
+        /* Capa oscura suave solo para contraste del texto */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* Documento principal */
+        .vant-doc {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 210, 255, 0.5);
+            border-radius: 48px;
+            padding: 42px 48px;
+            box-shadow: 0 30px 50px -25px rgba(0,0,0,0.5), 0 0 20px rgba(0,210,255,0.2);
+        }
+
+        /* Header VANT */
+        .vant-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.3);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 210, 255, 0.15);
+            border-radius: 50%;
+            padding: 4px;
+        }
+        .logo-icon img {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 3px rgba(0,210,255,0.5));
+        }
+        .logo-text {
+            font-weight: 900;
+            font-size: 28px;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .badge-vant {
+            background: rgba(0, 210, 255, 0.15);
+            border: 1px solid rgba(0, 210, 255, 0.4);
+            border-radius: 60px;
+            padding: 6px 16px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #00d2ff;
+            letter-spacing: 1.5px;
+        }
+
+        /* Títulos principales */
+        h1 {
+            font-size: 38px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .sub {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 13px;
+            border-left: 3px solid #00d2ff;
+            padding-left: 16px;
+            margin-bottom: 32px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Secciones */
+        .section {
+            margin-top: 40px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 20px;
+            display: inline-block;
+            border-bottom: 2px solid #00d2ff;
+            padding-bottom: 6px;
+        }
+
+        /* Tarjetas */
+        .lang-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            border-radius: 28px;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            margin: 20px 0;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+        .lang-card:hover {
+            border-color: rgba(0, 210, 255, 0.7);
+            background: rgba(0, 0, 0, 0.45);
+        }
+        .lang-row {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .lang-row:last-child {
+            border-bottom: none;
+        }
+        .lang-flag {
+            width: 105px;
+            padding: 16px 18px;
+            font-weight: 700;
+            font-size: 13px;
+            background: rgba(0, 210, 255, 0.1);
+            color: #00d2ff;
+            border-right: 1px solid rgba(0,210,255,0.2);
+            letter-spacing: 0.5px;
+        }
+        .lang-content {
+            flex: 1;
+            padding: 16px 20px;
+            font-size: 13px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        }
+
+        /* Tabla */
+        .vant-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(3px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+        .vant-table th {
+            background: rgba(0, 20, 40, 0.6);
+            color: #00d2ff;
+            padding: 14px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-bottom: 1px solid rgba(0,210,255,0.3);
+        }
+        .vant-table td {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 12px;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
+            font-size: 12.5px;
+        }
+        .vant-table tr:last-child td {
+            border-bottom: none;
+        }
+        .vant-table tr:hover td {
+            background: rgba(0, 210, 255, 0.1);
+        }
+
+        .info-vant {
+            background: rgba(0, 210, 255, 0.1);
+            border-left: 4px solid #00d2ff;
+            border-radius: 20px;
+            padding: 18px 24px;
+            margin: 28px 0;
+            backdrop-filter: blur(3px);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .footer-vant {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 9px;
+            color: rgba(200, 220, 255, 0.9);
+            border-top: 1px solid rgba(0,210,255,0.2);
+            padding-top: 24px;
+            letter-spacing: 0.8px;
+        }
+
+        a {
+            color: #00d2ff;
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(0,210,255,0.5);
+            transition: 0.2s;
+        }
+        a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+        .print-btn {
+            background: rgba(0, 210, 255, 0.2);
+            border: 1px solid rgba(0, 210, 255, 0.6);
+            color: #00d2ff;
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 16px;
+            font-family: inherit;
+            font-size: 12px;
+        }
+        .print-btn:hover {
+            background: #00d2ff;
+            color: #000000;
+            box-shadow: 0 0 16px rgba(0,210,255,0.5);
+        }
+
+        /* ========== SCROLLBAR MÁS DISCRETA ========== */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 210, 255, 0.25);
+            border-radius: 10px;
+            transition: background 0.2s;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 210, 255, 0.5);
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(0, 210, 255, 0.25) rgba(255, 255, 255, 0.05);
+        }
+
+        @media print {
+            body::before, body::after {
+                display: none;
+            }
+            .vant-doc {
+                background: #000000;
+                border: 1px solid #0a3350;
+                padding: 0.4in;
+            }
+            .print-btn {
+                display: none;
+            }
+            .lang-card {
+                background: #0a0f1a;
+            }
+            .logo-text, .lang-content, .vant-table td, .sub, .info-vant {
+                color: #ffffff !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="vant-doc">
+    <div style="text-align: right;">
+        <button class="print-btn" onclick="window.print();">🖨️ SALVAR COMO PDF / IMPRIMIR</button>
+    </div>
+
+    <div class="vant-header">
+        <div class="logo-area">
+            <div class="logo-icon">
+                <img src="https://i.imgur.com/0y2nnpR.png" alt="VANT Logo">
+            </div>
+            <div class="logo-text">VANT</div>
+            <div class="badge-vant">INTELIGÊNCIA AERONÁUTICA</div>
+        </div>
+        <div class="badge-vant">ANAC</div>
+    </div>
+
+    <h1 style="display: flex; align-items: center; gap: 12px;">
+        <img src="https://flagcdn.com/br.svg" alt="Bandeira Brasil" style="width: 48px; height: 36px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.3);">
+        <span>NORMATIVA DE DRONES<br>REPÚBLICA FEDERATIVA DO BRASIL</span>
+    </h1>
+    <div class="sub">Agência Nacional de Aviação Civil (ANAC) · Categoria aberta · Atualização oficial VANT</div>
+
+    <div class="section">
+        <div class="section-title">01 · REGISTRO OBRIGATÓRIO</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">PORTUGUÊS</div><div class="lang-content"><strong>Registro obrigatório</strong> no SISANT (ANAC) para drones >250g ou com câmera. Drones recreativos <250g sem câmera não precisam de registro. É necessário também cadastro no SARP.</div></div>
+            <div class="lang-row"><div class="lang-flag">ESPAÑOL</div><div class="lang-content"><strong>Registro obligatorio</strong> en SISANT (ANAC) para drones >250g o con cámara. Drones recreativos <250g sin cámara no requieren registro. También es necesario registro en SARP.</div></div>
+            <div class="lang-row"><div class="lang-flag">ENGLISH</div><div class="lang-content"><strong>Mandatory registration</strong> in SISANT (ANAC) for drones >250g or with camera. Recreational drones <250g without camera do not require registration. SARP registration also required.</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">02 · REGRAS DE VOO</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">PORTUGUÊS</div><div class="lang-content">Altitude máxima: <strong>120m (400 pés)</strong>. Voo VLOS obrigatório. Proibido sobre multidões. Distância mínima 5km de aeroportos. <strong>Seguro de responsabilidade civil</strong> obrigatório para drones >250g.</div></div>
+            <div class="lang-row"><div class="lang-flag">ESPAÑOL</div><div class="lang-content">Altura máxima: <strong>120m (400 pies)</strong>. Vuelo VLOS obligatorio. Prohibido sobre aglomeraciones. Distancia mínima 5km de aeropuertos. <strong>Seguro RC</strong> obligatorio para drones >250g.</div></div>
+            <div class="lang-row"><div class="lang-flag">ENGLISH</div><div class="lang-content">Max altitude: <strong>120m (400ft)</strong>. VLOS flight mandatory. Flying over crowds prohibited. Minimum 5km from airports. <strong>Liability insurance</strong> mandatory for drones >250g.</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">03 · ZONAS PROIBIDAS / RESTRIÇÕES</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">PORTUGUÊS</div><div class="lang-content">❌ <strong>Rio de Janeiro</strong> (Cristo Redentor, Pão de Açúcar, Maracanã) - zonas controladas. ❌ Aeroportos e heliportos. ❌ Áreas militares. ❌ Brasília (Plano Piloto). ❌ Parques nacionais e áreas indígenas. ❌ Estádios durante eventos.</div></div>
+            <div class="lang-row"><div class="lang-flag">ESPAÑOL</div><div class="lang-content">❌ <strong>Río de Janeiro</strong> (Cristo Redentor, Pan de Azúcar, Maracaná) - zonas controladas. ❌ Aeropuertos y helipuertos. ❌ Áreas militares. ❌ Brasilia. ❌ Parques nacionales y áreas indígenas. ❌ Estadios durante eventos.</div></div>
+            <div class="lang-row"><div class="lang-flag">ENGLISH</div><div class="lang-content">❌ <strong>Rio de Janeiro</strong> (Christ the Redeemer, Sugarloaf Mountain, Maracanã) - controlled zones. ❌ Airports and heliports. ❌ Military areas. ❌ Brasília. ❌ National parks and indigenous areas. ❌ Stadiums during events.</div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">04 · MULTAS E SANÇÕES</div>
+        <table class="vant-table">
+            <thead>
+                <tr><th>INFRAÇÃO</th><th>VIOLATION</th><th>MONTO / SANCIÓN</th></tr>
+            </thead>
+            <tbody>
+                <tr><td style="color:#ff9999;">Volar sem registro (>250g)</td>
+                    <td style="color:#ff9999;">Flying without registration</td>
+                    <td style="color:#ff6b6b; font-weight:700;">R$ 2.000 - R$ 50.000</td>
+                </tr>
+                <tr><td style="color:#ffcc88;">Volar em zona proibida</td>
+                    <td style="color:#ffcc88;">Flight in restricted zone</td>
+                    <td style="color:#ffaa44; font-weight:700;">R$ 5.000 - R$ 100.000</td>
+                </tr>
+                <tr><td style="color:#ffcc88;">Sobrevoar multidões</td>
+                    <td style="color:#ffcc88;">Overflying crowds</td>
+                    <td style="color:#ffaa44; font-weight:700;">R$ 10.000 - R$ 50.000</td>
+                </tr>
+                <tr><td style="color:#ff9999;">Acidente grave com danos</td>
+                    <td style="color:#ff9999;">Serious accident with damages</td>
+                    <td style="color:#ff6b6b; font-weight:700;">Multa + Responsabilidade penal + Confisco da aeronave</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-title">05 · LINKS OFICIAIS (ANAC)</div>
+        <div class="lang-card">
+            <div class="lang-row"><div class="lang-flag">PORTUGUÊS</div><div class="lang-content"><a href="https://www.anac.gov.br" target="_blank">ANAC - Portal oficial</a> · <a href="https://sistemas.anac.gov.br/sisant/" target="_blank">SISANT (Registro)</a> · <a href="https://vooemdia.anac.gov.br" target="_blank">Voe com segurança</a></div></div>
+            <div class="lang-row"><div class="lang-flag">ESPAÑOL</div><div class="lang-content"><a href="https://www.anac.gov.br" target="_blank">ANAC - Portal oficial</a> · <a href="https://sistemas.anac.gov.br/sisant/" target="_blank">SISANT (Registro)</a> · <a href="https://vooemdia.anac.gov.br" target="_blank">Vuele con seguridad</a></div></div>
+            <div class="lang-row"><div class="lang-flag">ENGLISH</div><div class="lang-content"><a href="https://www.anac.gov.br" target="_blank">ANAC official website</a> · <a href="https://sistemas.anac.gov.br/sisant/" target="_blank">SISANT (Registration)</a> · <a href="https://vooemdia.anac.gov.br" target="_blank">Fly safely</a></div></div>
+        </div>
+    </div>
+
+    <div class="info-vant">
+        ⚡ <strong>VANT RECOMENDA</strong> · Este documento é um resumo oficial baseado na regulamentação ANAC do Brasil (RBAC-E nº 94). Sempre consulte as fontes oficiais antes de cada voo. O não cumprimento gera sanções graves.
+    </div>
+
+    <div class="footer-vant">
+        ✦ VANT INTELIGÊNCIA AERONÁUTICA ✦ <br>
+        Baseado em RBAC-E nº 94 e regulamentações ANAC · República Federativa do Brasil · Versão trilíngue VANT (Português/Español/English)
+    </div>
+</div>
+</body>
+</html>
